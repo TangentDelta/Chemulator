@@ -1,0 +1,7 @@
+SET welding_fuel 1
+SET carbon 2
+SET hydrogen 3
+SET oil 4
+MOVE welding_fuel oil 10
+MOVE carbon oil 10
+MOVE hydrogen oil 10

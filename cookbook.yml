@@ -1,0 +1,14 @@
+#This is the cookbook. It contains all valid reactions.
+#It needs more reactions add to it :(
+ClF3:
+  volume: 3
+  reagents:
+    Fluorine: 3
+    Chlorine: 1
+  temp_low: 424
+Oil:
+  volume: 3
+  reagents:
+    Welding Fluid: 1
+    Carbon: 1
+    Hydrogen: 1

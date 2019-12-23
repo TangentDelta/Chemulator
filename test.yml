@@ -1,0 +1,16 @@
+#A sample reservoir layout file.
+Welding Fuel:
+  position: 1
+  contents:
+    Welding Fluid: 50
+Carbon:
+  position: 2
+  contents:
+    Carbon: 50
+Hydrogen:
+  position: 3
+  contents:
+    Hydrogen: 50
+Oil:
+  position: 4
+  contents:
