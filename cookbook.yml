@@ -1,5 +1,5 @@
 #This is the cookbook. It contains all valid reactions.
-#It needs more reactions add to it :(
+#It needs more reactions added to it :(
 ClF3:
   volume: 3
   reagents:
@@ -12,3 +12,21 @@ Oil:
     Welding Fluid: 1
     Carbon: 1
     Hydrogen: 1
+Amonia:
+  volume: 3
+  reagents:
+    Hydrogen: 3
+    Nitrogen: 1
+Diethylamine:
+  volume: 2
+  reagents:
+    Amonia: 1
+    Ethanol: 1
+  temp_low: 375
+Ephedrine:
+  volume: 3
+  reagents:
+    Sugar: 1
+    Oil: 1
+    Hydrogen: 1
+    Diethylamine: 1
