@@ -26,7 +26,7 @@ MachineLabelOne:  #The human-readable label of the machine.
     ReservoirLabel:  #The human-readable label of this reservoir
       beaker: large  #Optional beaker type
       position: 5  #The reagent reservoir slot in the chemicompiler
-      contents:  #A list of the reagents in the reservoir
+      contents:  #An optional list of the reagents in the reservoir
         reagent_identifier: 5  #reagent_identifier is the ID of a reagent from the reagents file. The number assigned to it is the volume of that reagent in the reservoir.
         reagent_identifier: 10
         ...
