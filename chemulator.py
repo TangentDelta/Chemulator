@@ -1,6 +1,6 @@
 """
 Chemulator
-Version 0.7.0
+Version 0.8.0
 By TangentDelta
 
 A Space Station 13 ChemiCompiler emulator and chemistry simulator!
@@ -14,6 +14,7 @@ Global imports
 import sys
 import os.path
 import yaml
+import re
 
 """
 Global immutables
@@ -25,226 +26,278 @@ beaker_types = {
 
 with open('cookbook.yml','r') as cbf:
 	cookbook = yaml.load(cbf, Loader=yaml.Loader)
+with open('reagents.yml','r') as rf:
+	reagent_book = yaml.load(rf, Loader=yaml.Loader)
 
 """
 Global classes
 """
 
-class Chemical:
-	"""
-	Basic chemical class that defines the chemical's name and volume of units in a beaker.
-	TODO: Remove entirely in favor of reagent dict in container
-	"""
+class World:
 	def __init__(self):
-		self.name = ""
-		self.temperature = 273
+		self.machines = []
+		self.tube_connections = []
+
+	def load_layout(self, layout_path):
+		with open(layout_path, 'r') as f:
+			data = yaml.load(f, Loader=yaml.Loader)
+			for entry_name, entry in data.items():
+				if entry['machine'] == 'chemicompiler':
+					chemfuck_data = ''
+					chemfuck_path = entry['program']
+					if not os.path.exists(chemfuck_path):
+						print("File Error")
+						print("Chemfuck file '{}' for Chemicompiler '{}' does not exist.".format(chemfuck_path, entry_name))
+						exit(1)
+					else:
+						with open(chemfuck_path,'r') as cff:
+							chemfuck_data = cff.read()
+
+					new_chemicompiler = Chemicompiler(self)
+					new_chemicompiler.name = entry_name
+					new_chemicompiler.program = chemfuck_data
+					new_chemicompiler.load_reservoir(entry['reservoirs'])
+					self.machines.append(new_chemicompiler)
+
+			#Link the reservoirs together with "tubes"
+			for connection in self.tube_connections:
+				for machine in self.machines:
+					if machine.name != connection['target_name']:
+						continue
+					del connection['pusher_reservoir']
+					connection['pusher'].reservoirs[connection['pusher_slot']] = machine.reservoirs[connection['target_slot']]
+
+
+
+	def run(self):
+		for machine in self.machines:
+			while machine.tick():
+				pass
+
+class Reagent:
+	"""
+	Basic reagent class that defines the reagent's name and volume of units in a beaker.
+	"""
+	def __init__(self, identifier):
+		if identifier not in reagent_book.keys():
+			print('Reagent Error')
+			print('Reagent ID "{}" not found in list of valid reagents.'.format(identifier))
+			exit(1)
+		self.identifier = identifier
+		self.name = reagent_book[identifier]
+		self.possible_reactions = {}
+
+		for reaction_name, reaction in cookbook.items():
+			for reagent_identifier in reaction['required_reagents'].keys():
+				if reagent_identifier == self.identifier:
+					self.possible_reactions[reaction_name] = reaction
+
 		self.volume = 0
 
 class Beaker:
 	"""
-	Basic beaker class that holds chemicals
+	Basic beaker class that holds reagents
 	TODO: Turn this into "Container" class. Make beakers separate classes that extend this class.
 	TODO: Move some of the routines to a "ReagenHandler" class to decrease clutter
 	"""
-	def __init__(self, load_data=None):
+	def __init__(self, parent, load_data=None):
+		self.parent = parent
+		self.world = self.parent.world
 		self.name = ""
 		self.volume = 50
 		self.contents = {}
 		self.total_temperature = 0
 		self.total_volume = 0
+		self.free_volume = 50
 
 		if load_data:
 			self.name = load_data['name']
-			if 'beaker' in load_data.keys():
-				self.volume = beaker_types[load_data['beaker']]
+			for key in load_data.keys():
+				if key == 'beaker':
+					if load_data['beaker'] in beaker_types.keys():
+						self.volume = beaker_types[load_data['beaker']]
+					else:
+						#Handles machine-to-machine tube connections
+						tube_search = re.search(r'tube\-(.+)\-(\d+)', load_data['beaker'])
+						if tube_search:
+							target_machine_name = tube_search.group(1)
+							target_machine_slot = tube_search.group(2)
+							self.world.tube_connections.append({
+								'pusher': self.parent,
+								'pusher_reservoir': self,
+								'pusher_slot': int(load_data['position']),
+								'target_name': target_machine_name,
+								'target_slot': int(target_machine_slot)
+							})
 
-			if load_data['contents'] != None:
-				for chemical_name,volume in load_data['contents'].items():
-					self.add_reagent(chemical_name, volume, 273)
-
-	"""
-	def handle_reactions_partial(self):
-		for reaction_name, reaction in cookbook.items():
-			if self.total_temperature < reaction['temp_low']:
-				continue
-			if 'temp_high' in reaction.keys():
-				if not self.total_temperature < reaction['temp_high']:
-					continue
-
-			matching_reagents = []
-			for reagent_name, volume in reaction['reagents'].items():
-				if reagent_name in self.contents.keys():
-					if self.contents[reagent_name].volume >= volume:
-						matching_reagents.append(self.contents[reagent_name])
-
-			if len(matching_reagents) != len(reaction['reagents'].keys()):
-				continue
-
-			#Everything looks good. Let's get cooking!
-			limiting_reagent = ''
-			reagent_ratios = {}
-			least_ratio = 999
-			for reagent_name in reaction['reagents'].keys():
-				reagent_ratio = self.contents[reagent_name].volume / reaction['reagents'][reagent_name]
-				reagent_ratios[reagent_name] = reagent_ratio
-
-				if reagent_ratio < least_ratio:
-					least_ratio = reagent_ratio
-					limiting_reagent = reagent_name
-
-			print('{}: Limiting reagent: {}'.format(reaction_name, limiting_reagent))
-			
-			for reagent_name,reagent in self.contents.items():
-				reaction_volume = reaction['reagents'][reagent_name]
-				self.remove_reagent(reagent_name,reaction_volume*least_ratio)
-
-			self.add_reagent(reaction_name, reaction['volume']*least_ratio, self.total_temperature)
-			self.purge_empty_reagents()
-	"""
+				if key == 'contents':
+					for reagent_identifier,volume in load_data['contents'].items():
+						self.add_reagent(reagent_identifier, volume)
 
 	def handle_reactions(self):
 		"""
-		Matches behavior used by Goon.
-		Reagents are not partially consumed during a reaction.
+		Matches reaction handler behavior used by Goon.
 		"""
 		#Set initial flag telling us we have reactions to compute
 		reaction_occured = True
 		while reaction_occured:
 			reaction_occured = False
-			for reaction_name, reaction in cookbook.items():
-				if 'temp_low' in reaction.keys():
-					if self.total_temperature < reaction['temp_low']:
+			for container_reagent_identifier, container_reagent in list(self.contents.items()):
+				for reaction_identifier, reaction in container_reagent.possible_reactions.items():
+					#Initial quick and easy checks
+					if len(reaction['required_reagents'].keys()) < 1:
 						continue
-				if 'temp_high' in reaction.keys():
-					if not self.total_temperature < reaction['temp_high']:
+					if reaction['min_temperature'] != None:
+						if self.total_temperature < reaction['min_temperature']:
+							continue
+					if reaction['max_temperature'] != None:
+						print(reaction['max_temperature'])
+						if not self.total_temperature < reaction['max_temperature']:
+							continue
+					if len(reaction['inhibitors']) > 0:
+						for reagent_identifier in reaction['inhibitors']:
+							if reagent_identifier in self.contents.keys():
+								continue
+
+					matching_reagents = []
+					created_volume = self.volume
+					for reagent_identifier, volume in reaction['required_reagents'].items():
+						if reagent_identifier in self.contents.keys():
+							if self.contents[reagent_identifier].volume >= volume:
+								matching_reagents.append(self.contents[reagent_identifier])
+								created_volume = min(created_volume, (self.contents[reagent_identifier].volume * reaction['result_amount']) / volume)
+							else:
+								break
+
+					if len(matching_reagents) != len(reaction['required_reagents'].keys()):
 						continue
 
-				matching_reagents = []
-				for reagent_name, volume in reaction['reagents'].items():
-					if reagent_name in self.contents.keys():
-						if self.contents[reagent_name].volume >= volume:
-							matching_reagents.append(self.contents[reagent_name])
+					print('({}): {}'.format(reaction_identifier,reaction.get('mix_phrase','')))
 
-				if len(matching_reagents) != len(reaction['reagents'].keys()):
-					continue
+					#Everything looks good. Let's get cooking!
+					
+					for reagent_identifier,reagent_volume in reaction['required_reagents'].items():
+						self.remove_reagent(reagent_identifier, (reagent_volume * created_volume) / reaction['result_amount'])
 
-				#Everything looks good. Let's get cooking!
-				for reagent_name in reaction['reagents'].keys():
-					reaction_volume = reaction['reagents'][reagent_name]
-					self.remove_reagent(reagent_name,reaction_volume)
+					self.add_reagent(reaction['result'], created_volume, self.total_temperature)
 
-				self.add_reagent(reaction_name, reaction['volume'], self.total_temperature)
+					reaction_occured = True
+				
 
-				reaction_occured = True
+	def update_total_volume(self):
+		"""
+		Updates the total and free volume values.
+		Remove any empty reagents.
+		"""
+		self.total_volume = 0
+		for reagent_id,reagent in list(self.contents.items()):
+			if reagent.volume == 0:
+				del self.contents[reagent_id]
+				continue
+			self.total_volume += reagent.volume
+		self.free_volume = self.volume - self.total_volume
 
-		self.purge_empty_reagents()
-
-
-	def add_reagent(self, reagent_name, reagent_volume, reagent_temperature):
+	def add_reagent(self, reagent_identifier, reagent_volume, reagent_temperature=273+20):
 		"""
 		Adds a reagent to the container.
 		"""
-		#Ensure that the container does not overflow!
-		volume_free = self.volume - self.total_volume
+		self.update_total_volume()
+		if reagent_volume == 0:
+			return
+		elif reagent_volume > self.free_volume:
+			reagent_volume = self.free_volume
 
-		if reagent_volume > volume_free:
-			reagent_volume = volume_free
-
-		self.total_volume += reagent_volume
-
-		if reagent_name in self.contents.keys():
-			existing_reagent = self.contents[reagent_name]
+		if reagent_identifier in self.contents.keys():
+			existing_reagent = self.contents[reagent_identifier]
 			new_reagent_volume = existing_reagent.volume + reagent_volume
-			current_reagent_ratio = existing_reagent.volume/new_reagent_volume
-			new_reagent_ratio = reagent_volume/new_reagent_volume
-			new_reagent_temp = (existing_reagent.temperature*current_reagent_ratio) + (reagent_temperature*new_reagent_ratio)
-			self.contents[reagent_name].temperature = new_reagent_temp
-			self.contents[reagent_name].volume += reagent_volume
+			self.contents[reagent_identifier].volume += reagent_volume
 		else:
-			new_reagent = Chemical()
-			new_reagent.name = reagent_name
+			new_reagent = Reagent(reagent_identifier)
 			new_reagent.volume = reagent_volume
-			new_reagent.temperature = reagent_temperature
-			self.contents[reagent_name] = new_reagent
-		
-		#Calculate new totals
-		self.total_volume = 0
-		for reagent in self.contents.values():
-			self.total_volume += reagent.volume
 
-		self.total_temperature = 0
-		for reagent in self.contents.values():
-			reagent_ratio = reagent.volume/self.total_volume
-			self.total_temperature += reagent.temperature*reagent_ratio
-			
+			new_reagent_volume = reagent_volume
+			self.contents[reagent_identifier] = new_reagent
 
-	def remove_reagent(self, target_name, volume):
+		self.total_temperature = (self.total_temperature * self.total_volume + reagent_temperature * new_reagent_volume) / (self.total_volume + new_reagent_volume)
+		self.update_total_volume()
+		self.handle_reactions()
+
+	def remove_reagent(self, target_identifier, volume):
 		"""
 		Remove a reagent targeted by its name in [volume] units.
-		Does not remove the reagent if its volume reaches 0! Use "purge_empty_reagents" for that.
 		"""
-		for reagent_name,reagent in self.contents.items():
-			if reagent_name == target_name:
+		for reagent_identifier,reagent in list(self.contents.items()):
+			if reagent_identifier == target_identifier:
 				reagent.volume -= volume
 				self.total_volume -= volume
-			
+
+				if reagent.volume == 0:
+					del self.contents[reagent_identifier]
 		
 
 
 	def transfer_contents_to(self, transfer_target, transfer_volume):
 		"""
 		Evenly transfers reagents to a target container
+		Basically reagents/trans_to combined with reagents/trans_to_direct
 		"""
-		#Calculate the total amount of volume occupied by reagents
-		self.total_volume = 0
-		for reagent in self.contents.values():
-			self.total_volume += reagent.volume
 
 		if transfer_volume > self.total_volume:
 			transfer_volume = self.total_volume
 
 		transfer_ratio = transfer_volume/self.total_volume
 
-		for reagent_name,reagent in self.contents.items():
+		for reagent_identifier,reagent in list(self.contents.items()):
 			transfer_amount = reagent.volume*transfer_ratio
-			transfer_target.add_reagent(reagent_name, transfer_amount, reagent.temperature)
+			transfer_target.add_reagent(reagent_identifier, transfer_amount, self.total_temperature)
 
-			self.remove_reagent(reagent_name, transfer_amount)
+			self.remove_reagent(reagent_identifier, transfer_amount)
 
+		self.update_total_volume()
+		self.handle_reactions()
+		transfer_target.update_total_volume()
 		transfer_target.handle_reactions()
-
-		self.purge_empty_reagents()
 
 
 	def set_temperature(self, new_temperature):
 		"""
-		Sets the temperature of the container and the reagents contained within it.
+		Sets the temperature of the container.
 		"""
-		for reagent in self.contents.values():
-			reagent.temperature = new_temperature
-
 		self.total_temperature = new_temperature
 
 		self.handle_reactions()
 
-	def purge_empty_reagents(self):
-		"""
-		Removes reagents that have a volume of 0 units.
-		"""
-		purge_list = []
+class ChemistryMachine:
+	def __init__(self, world):
+		self.world = world
+		self.type = None
 
-		for reagent_name, reagent in self.contents.items():
-			if reagent.volume == 0:
-				purge_list.append(reagent_name)
+	def tick(self):
+		return False
 
-		for reagent_name in purge_list:
-			del self.contents[reagent_name]
+class ReagentReservoir(ChemistryMachine):
+	"""
+	An unlimited reagent reservoir machine.
+	Pushes 100 units of a specified reagent to a connected reagent container.
+	"""
+	def __init__(self, world):
+		super().__init__(world)
+		self.type = 'reagent_reservoir'
+		self.connected_reagent_container = None
+		self.reagent = None
 
-class ChemiCompiler:
+	def tick(self):
+		if self.connected_reagent_container:
+			self.connected_reagent_container.add_reagent(self.reagent, 100)
+		return False
+
+class Chemicompiler(ChemistryMachine):
 	"""
 	ChemiCompiler class. Does all of the magic!
 	"""
-	def __init__(self):
+	def __init__(self, world):
+		super().__init__(world)
+		self.type = 'chemicompiler'
 		self.symbol_routines_dict = {
 			'>':self._op_move_pointer_right,
 			'<':self._op_move_pointer_left,
@@ -273,17 +326,14 @@ class ChemiCompiler:
 		self.tx = 0 #Target Register
 		self.ax = 0 #Amount Register
 
-	def load_program(self, program_path):
-		with open(program_path, 'r') as ppf:
-			self.program = ppf.read()
+	def load_reservoir(self, reservoir_data):
+		for beaker_name,beaker_data in reservoir_data.items():
+			beaker_data['name'] = beaker_name
+			new_beaker = Beaker(self, beaker_data)
+			self.reservoirs[int(beaker_data['position'])] = new_beaker
 
-	def load_reservoir(self, reservoir_path):
-		with open(reservoir_path, 'r') as rpf:
-			data = yaml.load(rpf, Loader=yaml.Loader)
-			for beaker_name,beaker_data in data.items():
-				beaker_data['name'] = beaker_name
-				new_beaker = Beaker(beaker_data)
-				self.reservoirs[int(beaker_data['position'])] = new_beaker
+	def tick(self):
+		return self.execute()
 
 	def execute(self):
 		sym = self.program[self.ip]	#Load symbol from PC
@@ -293,9 +343,11 @@ class ChemiCompiler:
 		sym_routine()
 		self.ip+=1
 		if self.ip > (len(self.program)-1):
-			print('ChemiCompiler program complete')
+			#print('ChemiCompiler program complete')
 			self._print_reservoirs()
-			exit(1)
+			return False
+			#exit(1)
+		return True
 
 	"""
 	Debugging ChemiCompiler routines
@@ -317,22 +369,32 @@ class ChemiCompiler:
 		print(' '.join(look))
 
 	def _print_reservoirs(self):
+		print('Chemicompiler({}) Reservoirs:'.format(self.name))
 		for i in range(0,11):
 			if self.reservoirs[i] != None:
 				reservoir = self.reservoirs[i]
-				print('{}({}):'.format(i,reservoir.name))
-				print('\tVolume: {} units'.format(reservoir.volume))
-				print('\tTemperature: {}K'.format(reservoir.total_temperature))
-				print('\tContents:')
+				if reservoir.parent != self:
+					t_machine = reservoir.parent.type
+					t_name = reservoir.parent.name
+					for j in range(0,11):
+						if reservoir.parent.reservoirs[j] == reservoir:
+							t_slot = j
+							break
+					print('\t{}({})-TUBE-{}({})[{}]:'.format(i,reservoir.name,t_machine,t_name,t_slot))
+				else:
+					print('\t{}({}):'.format(i,reservoir.name))
+				print('\t\tVolume: {} units'.format(reservoir.volume))
+				print('\t\tTemperature: {}K'.format(reservoir.total_temperature))
+				print('\t\tContents:')
 				for reagent_name,reagent in reservoir.contents.items():
-					print('\t\t{}: {} units {}K'.format(reagent_name, reagent.volume, reagent.temperature))
+					print('\t\t\t{}: {} units'.format(reagent_book[reagent_name]['name'], reagent.volume))
 
 	"""
 	Utility ChemiCompiler routines
 	"""
 	def _throw_chem_error(self, error_message):
 		print("ChemiCompiler Error")
-		print(error_message)
+		print('({}) {}'.format(self.name, error_message))
 		exit(1)
 
 	def _transfer_reagents(self, source_slot, target_slot, transfer_volume):
@@ -340,22 +402,21 @@ class ChemiCompiler:
 			self._throw_chem_error("Source slot {} has no container!".format(source_slot))
 		if self.reservoirs[target_slot] == None:
 			self._throw_chem_error("Destination slot {} has no container!".format(target_slot))
+		if self.reservoirs[source_slot].total_volume == 0:
+			self._throw_chem_error("Source slot {} is empty!".format(source_slot))
 
 		reservoir_target = self.reservoirs[target_slot]
 		reservoir_source = self.reservoirs[source_slot]
-
+		
+		print("Chemicompiler({}) transfer {} units from {}({}) to {}({})".format(self.name, transfer_volume, source_slot, reservoir_source.name, target_slot, reservoir_target.name))
 		reservoir_source.transfer_contents_to(reservoir_target, transfer_volume)
-
-		print("Chemicompiler transfer {} units from {}({}) to {}({})".format(transfer_volume, source_slot, reservoir_source.name, target_slot, reservoir_target.name))
 
 	def _heat_reagents(self, target_slot, target_temperature):
 		if self.reservoirs[target_slot] == None:
 			self._throw_chem_error("Target slot {} has no container!".format(target_slot))
 
-		self.reservoirs[target_slot].set_temperature(target_temperature)
-
 		print("Chemicompiler heat {} to {}K".format(target_slot, target_temperature))
-		self._print_reservoirs()
+		self.reservoirs[target_slot].set_temperature(target_temperature)
 
 	"""
 	Chemfuck symbol routines
@@ -432,28 +493,20 @@ class ChemiCompiler:
 """
 Main code
 """
-if(len(sys.argv) != 3):
+if(len(sys.argv) != 2):
 	print("Syntax Error")
-	print("Usage: chemulator.py <chemfuck program> <reservoir YAML>")
+	print("Usage: chemulator.py <layout YAML>")
 	exit(1)
 
 if not os.path.exists(sys.argv[1]):
 	print("File Error")
-	print("Chemfuck file '{}' does not exist.".format(sys.argv[1]))
+	print("Layout file '{}' does not exist.".format(sys.argv[1]))
 	exit(1)
 else:
-	program_path = sys.argv[1]
+	layout_path = sys.argv[1]
 
-if not os.path.exists(sys.argv[2]):
-	print("File Error")
-	print("Reservoir file '{}' does not exist.".format(sys.argv[2]))
-	exit(1)
-else:
-	reservoir_path = sys.argv[2]
+world = World()
 
-chemi_comp = ChemiCompiler()
-chemi_comp.load_program(program_path)
-chemi_comp.load_reservoir(reservoir_path)
+world.load_layout(layout_path)
 
-while True:
-	chemi_comp.execute()
+world.run()

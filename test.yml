@@ -1,16 +1,63 @@
-#A sample reservoir layout file.
-Welding Fuel:
-  position: 1
-  contents:
-    Welding Fluid: 50
-Carbon:
-  position: 2
-  contents:
-    Carbon: 50
-Hydrogen:
-  position: 3
-  contents:
-    Hydrogen: 50
-Oil:
-  position: 4
-  contents:
+#A sample layout file.
+Diethylamine:
+  machine: chemicompiler
+  program: diethylamine.bf
+  reservoirs:
+    Hydrogen:
+      position: 1
+      contents:
+        hydrogen: 50
+    Nitrogen:
+      position: 2
+      contents:
+        nitrogen: 50
+    Ethanol:
+      position: 3
+      contents:
+        ethanol: 50
+    Ammonia:
+      position: 4
+    Diethylamine - Result:
+      position: 5
+      beaker: tube-Ephedrine-4
+Ephedrine:
+  machine: chemicompiler
+  program: ephedrine.bf
+  reservoirs:
+    Sugar:
+      position: 1
+      contents:
+        sugar: 50
+    Oil:
+      position: 2
+      contents:
+        oil: 50
+    Hydrogen:
+      position: 3
+      contents:
+        hydrogen: 50
+    Diethylamine:
+      position: 4
+    Ephedrine:
+      position: 5
+      beaker: tube-Methamphetamine-1
+Methamphetamine:
+  machine: chemicompiler
+  program: methamphetamine.bf
+  reservoirs:
+    Ephedrine:
+      position: 1
+    Hydrogen:
+      position: 2
+      contents:
+        hydrogen: 50
+    Iodine:
+      position: 3
+      contents:
+        iodine: 50
+    Phosphorus:
+      position: 4
+      contents:
+        phosphorus: 50
+    Methamphetamine - Result:
+      position: 5

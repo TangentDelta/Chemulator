@@ -1,0 +1,324 @@
+LSD:
+  name: Lysergic acid diethylamide
+VHFCS:
+  name: Very-High-Fructose Corn Syrup
+acetaldehyde:
+  name: Acetaldehyde
+acetic_acid:
+  name: Acetic Acid
+acetone:
+  name: Acetone
+acid:
+  name: Sulfuric Acid
+aluminium:
+  name: Aluminium
+ammonia:
+  name: Ammonia
+anti_fart:
+  name: Simethicone
+anti_rad:
+  name: Potassium Iodide
+antihistamine:
+  name: Diphenhydramine
+antihol:
+  name: Antihol
+aranesp:
+  name: Aranesp
+ash:
+  name: Ash
+atropine:
+  name: Atropine
+badgrease:
+  name: Partially Hydrogenated Space-Soybean Oil
+bathsalts:
+  name: Bath Salts
+beepskybeer:
+  name: "Beepskybr\xE4u Security Schwarzbier"
+beer:
+  name: Beer
+beff:
+  name: Beff
+blackpowder:
+  name: Black Powder
+blood:
+  name: Blood
+booster_enzyme:
+  name: Booster Enzyme
+bourbon:
+  name: Bourbon
+bromine:
+  name: Bromine
+calomel:
+  name: Calomel
+capulettium:
+  name: Capulettium
+capulettium_plus:
+  name: Capulettium Plus
+carbon:
+  name: Carbon
+catdrugs:
+  name: Cat Drugs
+catonium:
+  name: Catonium
+charcoal:
+  name: Activated Charcoal
+cheese:
+  name: Cheese
+chickensoup:
+  name: Chicken Soup
+chlorine:
+  name: Chlorine
+chocolate:
+  name: Chocolate
+chromium:
+  name: Chromium
+clacid:
+  name: Hydrochloric Acid
+cleaner:
+  name: Space cleaner
+cocktail_citrus:
+  name: Triple Citrus
+cola:
+  name: cola
+colors:
+  name: colorful reagent
+copper:
+  name: Copper
+cornstarch:
+  name: Corn Starch
+cornsyrup:
+  name: Corn Syrup
+crank:
+  name: Crank
+cryostylane:
+  name: Cryostylane
+cryoxadone:
+  name: Cryoxadone
+cyanide:
+  name: Cyanide
+denatured_enzyme:
+  name: Denatured Enzyme
+diethylamine:
+  name: Diethylamine
+diluted_fliptonium:
+  name: diluted fliptonium
+dna_mutagen:
+  name: Stable mutagen
+egg:
+  name: Egg
+ephedrine:
+  name: Ephedrine
+epinephrine:
+  name: Epinephrine
+ethanol:
+  name: Ethanol
+ether:
+  name: Ether
+fakecheese:
+  name: Chees Product
+fartonium:
+  name: fartonium
+ff-foam:
+  name: Firefighting foam
+flashpowder:
+  name: Flash Powder
+fliptonium:
+  name: fliptonium
+fluorine:
+  name: Fluorine
+fluorosurfactant:
+  name: Foam surfactant
+formaldehyde:
+  name: Embalming fluid
+fuel:
+  name: Welding Fuel
+gcheese:
+  name: Weird Cheese
+glitter:
+  name: glitter
+grease:
+  name: Grease
+gvomit:
+  name: Green Vomit
+hairgrownium:
+  name: Hairgrowium
+haloperidol:
+  name: Haloperidol
+hugs:
+  name: Hugs
+hunchback:
+  name: Hunchback
+hydrogen:
+  name: Hydrogen
+infernite:
+  name: Chlorine Triflouride
+insulin:
+  name: Insulin
+iodine:
+  name: Iodine
+iron:
+  name: Iron
+itching:
+  name: Itching Powder
+jenkem:
+  name: Jenkem
+juice_lemon:
+  name: Lemon Juice
+juice_lime:
+  name: Lime Juice
+juice_orange:
+  name: Orange Juice
+juice_tomato:
+  name: Tomato Juice
+krokodil:
+  name: Krokodil
+ldmatter:
+  name: Stable Liquid Dark Matter
+life:
+  name: Life
+lipolicide:
+  name: Lipolicide
+lithium:
+  name: Lithium
+love:
+  name: pure love
+lube:
+  name: Space Lube
+magnesium:
+  name: Magnesium
+mannitol:
+  name: Mannitol
+meat_slurry:
+  name: Meat Slurry
+mercury:
+  name: Mercury
+methamphetamine:
+  name: Methamphetamine
+milk:
+  name: Milk
+morphine:
+  name: Morphine
+msg:
+  name: Monosodium Glutamate
+mugwort:
+  name: Mugwort
+mutadone:
+  name: Mutadone
+mutagen:
+  name: Unstable mutagen
+nanites:
+  name: Nanites
+napalm:
+  name: Phlogiston
+napalm_goo:
+  name: Napalm
+neurotoxin:
+  name: Neurotoxin
+nitrogen:
+  name: Nitrogen
+oculine:
+  name: Oculine
+oil:
+  name: Oil
+omnizine:
+  name: Omnizine
+oxygen:
+  name: Oxygen
+pacid:
+  name: Fluorosulfuric Acid
+paper:
+  name: Paper
+penteticacid:
+  name: Pentetic Acid
+pepperoni:
+  name: Pepperoni
+perfluorodecalin:
+  name: Perfluorodecalin
+phenol:
+  name: Phenol
+phosphorus:
+  name: Phosphorus
+plasma:
+  name: Plasma
+poo:
+  name: Compost
+potash:
+  name: potash
+potassium:
+  name: Potassium
+psilocybin:
+  name: Psilocybin
+radium:
+  name: Radium
+refried_beans:
+  name: Refried Beans
+salbutamol:
+  name: Salbutamol
+salicylic_acid:
+  name: Salicylic Acid
+saline:
+  name: Saline-Glucose Solution
+salt:
+  name: Salt
+saltpetre:
+  name: saltpetre
+silicate:
+  name: Silicate
+silicon:
+  name: Silicon
+silver:
+  name: Silver
+silver_sulfadiazine:
+  name: Burn Medication
+smokepowder:
+  name: Smoke Powder
+sodium:
+  name: Sodium
+sonic:
+  name: NAME_NOT_FOUND
+sonicpowder:
+  name: Hootingium
+sorium:
+  name: Stable Sorium
+space_drugs:
+  name: Space Drugs
+space_fungus:
+  name: Space Fungus
+spaceacillin:
+  name: spaceacillin
+stabiliser:
+  name: Stabilising Agent
+strange_reagent:
+  name: ''
+stypic_powder:
+  name: Styptic Powder
+sugar:
+  name: Sugar
+sulfonal:
+  name: Sulfonal
+sulfur:
+  name: Sulfur
+super_hairgrownium:
+  name: Super Hairgrownium
+synthflesh:
+  name: Synthetic Flesh
+teporone:
+  name: Teporone
+thalmerite:
+  name: Pyrosium
+thermite:
+  name: Thermite
+urine:
+  name: Urine
+vomit:
+  name: Vomit
+water:
+  name: Water
+water_holy:
+  name: Holy Water
+weedkiller:
+  name: Atrazine
+wine:
+  name: Wine
+yuck:
+  name: NAME_NOT_FOUND

@@ -1,0 +1,10 @@
+SET ephedrine 1
+SET hydrogen 2
+SET iodine 3
+SET phosphorus 4
+SET methamphetamine 5
+MOVE ephedrine methamphetamine 10
+MOVE hydrogen methamphetamine 10
+MOVE iodine methamphetamine 10
+MOVE phosphorus methamphetamine 10
+HEAT methamphetamine 375

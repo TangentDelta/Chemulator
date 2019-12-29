@@ -1,0 +1,9 @@
+SET sugar 1
+SET oil 2
+SET hydrogen 3
+SET diethylamine 4
+SET ephedrine 5
+MOVE sugar ephedrine 10
+MOVE oil ephedrine 10
+MOVE hydrogen ephedrine 10
+MOVE diethylamine ephedrine 10

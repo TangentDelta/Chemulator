@@ -1,0 +1,10 @@
+SET hydrogen 1
+SET nitrogen 2
+SET ethanol 3
+SET amonia 4
+SET diethylamine 5
+MOVE hydrogen amonia 33
+MOVE nitrogen amonia 11
+MOVE amonia diethylamine 20
+MOVE ethanol diethylamine 20
+HEAT diethylamine 375

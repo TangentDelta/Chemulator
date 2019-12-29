@@ -1,32 +1,1646 @@
-#This is the cookbook. It contains all valid reactions.
-#It needs more reactions added to it :(
-ClF3:
-  volume: 3
-  reagents:
-    Fluorine: 3
-    Chlorine: 1
-  temp_low: 424
-Oil:
-  volume: 3
-  reagents:
-    Welding Fluid: 1
-    Carbon: 1
-    Hydrogen: 1
-Amonia:
-  volume: 3
-  reagents:
-    Hydrogen: 3
-    Nitrogen: 1
-Diethylamine:
-  volume: 2
-  reagents:
-    Amonia: 1
-    Ethanol: 1
-  temp_low: 375
-Ephedrine:
-  volume: 3
-  reagents:
-    Sugar: 1
-    Oil: 1
-    Hydrogen: 1
-    Diethylamine: 1
+LSD:
+  consume_all: 0
+  id: LSD
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture turns a rather unassuming color and settles.
+  name: Lysergic acid diethylamide
+  required_reagents:
+    diethylamine: 1
+    space_fungus: 1
+  required_temperature: -1
+  result: LSD
+  result_amount: 3
+VHFCS:
+  consume_all: 0
+  id: VHFCS
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture emits a sickly-sweet smell.
+  name: Very-High-Fructose Corn Syrup
+  required_reagents:
+    cornsyrup: 1
+    denatured_enzyme: 0
+  required_temperature: -1
+  result: VHFCS
+  result_amount: 1
+acetaldehyde:
+  consume_all: 0
+  id: acetaldehyde
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 548
+  mix_phrase: It smells like a bad hangover in here.
+  name: Acetaldehyde
+  required_reagents:
+    chromium: 1
+    copper: 1
+    ethanol: 1
+    oxygen: 1
+  required_temperature: 548
+  result: acetaldehyde
+  result_amount: 3
+acetic_acid:
+  consume_all: 0
+  id: acetic_acid
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: It smells like vinegar and a bad hangover in here.
+  name: Acetic Acid
+  required_reagents:
+    acetaldehyde: 1
+    nitrogen: 4
+    oxygen: 1
+  required_temperature: -1
+  result: acetic_acid
+  result_amount: 3
+acetone:
+  consume_all: 0
+  id: acetone
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The smell of paint thinner assaults you as the solution bubbles.
+  name: Acetone
+  required_reagents:
+    fuel: 1
+    oil: 1
+    oxygen: 1
+  required_temperature: -1
+  result: acetone
+  result_amount: 3
+acid:
+  consume_all: 0
+  id: acid
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture gives off a sharp acidic tang.
+  name: Sulfuric Acid
+  required_reagents:
+    hydrogen: 1
+    oxygen: 1
+    sulfur: 1
+  required_temperature: -1
+  result: acid
+  result_amount: 2
+ammonia:
+  consume_all: 0
+  id: ammonia
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture bubbles, emitting an acrid reek.
+  name: Ammonia
+  required_reagents:
+    hydrogen: 3
+    nitrogen: 1
+  required_temperature: -1
+  result: ammonia
+  result_amount: 3
+anti_fart:
+  consume_all: 0
+  id: anti_fart
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: ''
+  name: Simethicone
+  required_reagents:
+    chlorine: 1
+    hydrogen: 1
+    oxygen: 1
+    silicon: 1
+  required_temperature: -1
+  result: anti_fart
+  result_amount: 3
+anti_rad:
+  consume_all: 0
+  id: anti_rad
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The solution settles calmly and emits gentle fumes.
+  name: Potassium Iodide
+  required_reagents:
+    iodine: 1
+    potassium: 1
+  required_temperature: -1
+  result: anti_rad
+  result_amount: 2
+antihistamine:
+  consume_all: 0
+  id: diphenhydramine
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture fizzes gently.
+  name: Diphenhydramine
+  required_reagents:
+    bromine: 1
+    carbon: 1
+    diethylamine: 1
+    ethanol: 1
+    oil: 1
+  required_temperature: -1
+  result: antihistamine
+  result_amount: 4
+antihol:
+  consume_all: 0
+  id: antihol
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: A minty and refreshing smell drifts from the effervescent mixture.
+  name: Antihol
+  required_reagents:
+    charcoal: 1
+    ethanol: 1
+  required_temperature: -1
+  result: antihol
+  result_amount: 2
+aranesp:
+  consume_all: 0
+  id: aranesp
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: ''
+  name: Aranesp
+  required_reagents:
+    atropine: 1
+    epinephrine: 1
+    insulin: 1
+  required_temperature: -1
+  result: aranesp
+  result_amount: 3
+atropine:
+  consume_all: 0
+  id: atropine
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: A horrid smell like something died drifts from the mixture.
+  name: Atropine
+  required_reagents:
+    acetone: 1
+    acid: 1
+    diethylamine: 1
+    ethanol: 1
+    phenol: 1
+  required_temperature: -1
+  result: atropine
+  result_amount: 4
+badgrease:
+  consume_all: 0
+  id: badgrease
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 523
+  mix_phrase: The mixture emits a burnt, oily smell.
+  name: Partially Hydrogenated Space-Soybean Oil
+  required_reagents:
+    grease: 1
+    hydrogen: 1
+  required_temperature: 523
+  result: badgrease
+  result_amount: 2
+bathsalts:
+  consume_all: 0
+  id: bathsalts
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: Tiny cubic crystals precipitate out of the mixture. Huh.
+  name: Bath Salts
+  required_reagents:
+    cleaner: 1
+    denatured_enzyme: 1
+    mercury: 1
+    msg: 1
+    mugwort: 1
+    saltpetre: 1
+    yuck: 1
+  required_temperature: 373
+  result: bathsalts
+  result_amount: 6
+beff:
+  consume_all: 0
+  id: beff
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture solidifies, taking a crystalline appearance.
+  name: Beff
+  required_reagents:
+    badgrease: 2
+    meat_slurry: 1
+    plasma: 1
+  required_temperature: -1
+  result: beff
+  result_amount: 4
+blackpowder:
+  consume_all: 0
+  id: blackpowder
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture yields a granular black powder.
+  name: Black Powder
+  required_reagents:
+    charcoal: 1
+    saltpetre: 1
+    sulfur: 1
+  required_temperature: -1
+  result: blackpowder
+  result_amount: 3
+calomel:
+  consume_all: 0
+  id: calomel
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: Stinging vapors rise from the solution.
+  name: Calomel
+  required_reagents:
+    chlorine: 1
+    mercury: 1
+  required_temperature: 373
+  result: calomel
+  result_amount: 1
+capulettium:
+  consume_all: 0
+  id: capulettium
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The smell of death wafts from the solution.
+  name: Capulettium
+  required_reagents:
+    chlorine: 1
+    hydrogen: 1
+    neurotoxin: 1
+  required_temperature: -1
+  result: capulettium
+  result_amount: 1
+capulettium_plus:
+  consume_all: 0
+  id: capulettium_plus
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The solution begins to slosh about violently by itself.
+  name: Capulettium Plus
+  required_reagents:
+    capulettium: 1
+    ephedrine: 1
+    methamphetamine: 1
+  required_temperature: -1
+  result: capulettium_plus
+  result_amount: 3
+catdrugs:
+  consume_all: 0
+  id: catdrugs
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: The mixture hisses oddly.
+  name: Cat Drugs
+  required_reagents:
+    ammonia: 1
+    catonium: 1
+    fuel: 1
+    psilocybin: 1
+  required_temperature: 373
+  result: catdrugs
+  result_amount: 3
+charcoal:
+  consume_all: 0
+  id: charcoal
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: The mixture yields a fine black powder.
+  name: Activated Charcoal
+  required_reagents:
+    ash: 1
+    salt: 1
+  required_temperature: 373
+  result: charcoal
+  result_amount: 2
+cheese:
+  consume_all: 0
+  id: cheese
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture curdles up.
+  name: Cheese
+  required_reagents:
+    milk: 1
+    vomit: 1
+  required_temperature: -1
+  result: cheese
+  result_amount: 1
+clacid:
+  consume_all: 0
+  id: clacid
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture gives off a sharp acidic tang.
+  name: Hydrochloric Acid
+  required_reagents:
+    chlorine: 1
+    hydrogen: 1
+    water: 1
+  required_temperature: -1
+  result: clacid
+  result_amount: 3
+cocktail_beepskybeer:
+  consume_all: 0
+  id: beepskybeer
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The beer is filled briefly by thousands of brilliant, tiny electrical
+    arcs before growing calm and dark.
+  name: "Beepskybr\xE4u Security Schwarzbier"
+  required_reagents:
+    beer: 1
+    nanites: 1
+  required_temperature: -1
+  result: beepskybeer
+  result_amount: 2
+cocktail_citrus:
+  consume_all: 0
+  id: cocktail_citrus
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The citrus juices begin to blend together.
+  name: Triple Citrus
+  required_reagents:
+    juice_lemon: 1
+    juice_lime: 1
+    juice_orange: 1
+  required_temperature: -1
+  result: cocktail_citrus
+  result_amount: 3
+cocktail_hunchback:
+  consume_all: 0
+  id: hunchback
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The chunks of tomato paste hang in the bourbon and cola as an emulsion.
+    It looks as horrible as that sounds.
+  name: Hunchback
+  required_reagents:
+    bourbon: 1
+    cola: 1
+    juice_tomato: 1
+  required_temperature: -1
+  result: hunchback
+  result_amount: 3
+cola:
+  consume_all: 0
+  id: cola
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture begins to fizz.
+  name: cola
+  required_reagents:
+    carbon: 1
+    oxygen: 1
+    sugar: 1
+    water: 1
+  required_temperature: -1
+  result: cola
+  result_amount: 4
+colors:
+  consume_all: 0
+  id: colors
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The substance flashes multiple colors and emits the smell of a pocket
+    protector.
+  name: colorful reagent
+  required_reagents:
+    cocktail_citrus: 1
+    cryoxadone: 1
+    plasma: 1
+    radium: 1
+    space_drugs: 1
+    stabiliser: 1
+  required_temperature: -1
+  result: colors
+  result_amount: 6
+cornsyrup:
+  consume_all: 0
+  id: cornsyrup
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: The mixture forms a viscous, clear fluid!
+  name: Corn Syrup
+  required_reagents:
+    acid: 1
+    cornstarch: 1
+  required_temperature: 373
+  result: cornsyrup
+  result_amount: 2
+crank:
+  consume_all: 0
+  id: crank
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: The mixture violently reacts, leaving behind a few crystalline shards.
+  name: Crank
+  required_reagents:
+    acid: 1
+    ammonia: 1
+    antihistamine: 1
+    fuel: 1
+    lithium: 1
+  required_temperature: 373
+  result: crank
+  result_amount: 5
+cryostylane:
+  consume_all: 0
+  id: cryostylane
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: A light layer of frost forms on top of the mixture.
+  name: Cryostylane
+  required_reagents:
+    nitrogen: 1
+    plasma: 1
+    water: 1
+  required_temperature: -1
+  result: cryostylane
+  result_amount: 3
+cryoxadone:
+  consume_all: 0
+  id: cryoxadone
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The solution bubbles softly.
+  name: Cryoxadone
+  required_reagents:
+    acetone: 1
+    cryostylane: 1
+    mutagen: 1
+    plasma: 1
+  required_temperature: -1
+  result: cryoxadone
+  result_amount: 3
+cyanide:
+  consume_all: 0
+  id: cyanide
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: The mixture gives off a faint scent of almonds.
+  name: Cyanide
+  required_reagents:
+    ammonia: 1
+    oil: 1
+    oxygen: 1
+  required_temperature: 373
+  result: cyanide
+  result_amount: 1
+denatured_enzyme:
+  consume_all: 0
+  id: denatured_enzyme
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 423
+  mix_phrase: The solution burns, leaving behind a lifeless mass!
+  name: Denatured Enzyme
+  required_reagents:
+    booster_enzyme: 1
+  required_temperature: 423
+  result: denatured_enzyme
+  result_amount: 1
+diethylamine:
+  consume_all: 0
+  id: diethylamine
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: A horrible smell pours forth from the mixture.
+  name: Diethylamine
+  required_reagents:
+    ammonia: 1
+    ethanol: 1
+  required_temperature: 373
+  result: diethylamine
+  result_amount: 2
+diluted_fliptonium:
+  consume_all: 0
+  id: diluted_fliptonium
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture swirls around in a kinda lackluster way. You feel pretty
+    unimpressed.
+  name: diluted fliptonium
+  required_reagents:
+    fliptonium: 1
+    water: 2
+  required_temperature: -1
+  result: diluted_fliptonium
+  result_amount: 3
+dna_mutagen:
+  consume_all: 0
+  id: dna_mutagen
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The substance turns a drab green and begins to bubble.
+  name: Stable mutagen
+  required_reagents:
+    acetone: 1
+    bromine: 1
+    lithium: 1
+    mutagen: 1
+  required_temperature: -1
+  result: dna_mutagen
+  result_amount: 3
+dna_mutagen/dna_mutagen2:
+  consume_all: 0
+  id: dna_mutagen2
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: ''
+  name: ''
+  required_reagents:
+    lithium: 1
+    mutadone: 3
+  required_temperature: -1
+  result: ''
+  result_amount: 4
+ephedrine:
+  consume_all: 0
+  id: ephedrine
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The solution fizzes and gives off toxic fumes.
+  name: Ephedrine
+  required_reagents:
+    diethylamine: 1
+    hydrogen: 1
+    oil: 1
+    sugar: 1
+  required_temperature: -1
+  result: ephedrine
+  result_amount: 3
+epinephrine:
+  consume_all: 0
+  id: epinephrine
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: Tiny white crystals precipitate out of the solution.
+  name: Epinephrine
+  required_reagents:
+    acetone: 1
+    chlorine: 1
+    diethylamine: 1
+    hydrogen: 1
+    oxygen: 1
+    phenol: 1
+  required_temperature: -1
+  result: epinephrine
+  result_amount: 4
+ether:
+  consume_all: 0
+  id: ether
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture yields a pungent odor, which makes you tired.
+  name: Ether
+  required_reagents:
+    clacid: 1
+    ethanol: 1
+    oxygen: 1
+  required_temperature: -1
+  result: ether
+  result_amount: 1
+explosion_magnesium:
+  consume_all: 0
+  id: explosion_magnesium
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture explodes!
+  name: Magnesium Explosion
+  required_reagents:
+    copper: 1
+    magnesium: 1
+    oxygen: 1
+  required_temperature: -1
+  result: ''
+  result_amount: 1
+fartonium:
+  consume_all: 0
+  id: fartonium
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The substance makes a little 'toot' noise and starts to smell pretty
+    bad.
+  name: fartonium
+  required_reagents:
+    egg: 1
+    fakecheese: 1
+    refried_beans: 1
+    yuck: 1
+  required_temperature: -1
+  result: fartonium
+  result_amount: 2
+firefoam:
+  consume_all: 0
+  id: ff-foam
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture bubbles gently.
+  name: Firefighting foam
+  required_reagents:
+    carbon: 1
+    chlorine: 1
+    sulfur: 1
+  required_temperature: -1
+  result: ff-foam
+  result_amount: 3
+flaptonium:
+  consume_all: 0
+  id: flaptonium
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: The substance turns an airy sky-blue and foams up into a new shape.
+  name: flaptonium
+  required_reagents:
+    blood: 1
+    chickensoup: 1
+    colors: 1
+    egg: 1
+    strange_reagent: 1
+  required_temperature: 373
+  result: null
+  result_amount: 1
+flash_powder:
+  consume_all: 0
+  id: flashpowder
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The chemicals hiss and fizz briefly before falling still.
+  name: Flash Powder
+  required_reagents:
+    aluminium: 1
+    chlorine: 1
+    potassium: 1
+    stabiliser: 1
+    sulfur: 1
+  required_temperature: -1
+  result: flashpowder
+  result_amount: 5
+fliptonium:
+  consume_all: 0
+  id: fliptonium
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture swirls around excitedly!
+  name: fliptonium
+  required_reagents:
+    chocolate: 1
+    ephedrine: 1
+    ldmatter: 1
+    sonic: 1
+  required_temperature: -1
+  result: fliptonium
+  result_amount: 4
+formaldehyde:
+  consume_all: 0
+  id: formaldehyde
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 423
+  mix_phrase: Ugh, it smells like the morgue in here.
+  name: Embalming fluid
+  required_reagents:
+    ethanol: 1
+    oxygen: 1
+    silver: 1
+  required_temperature: 423
+  result: formaldehyde
+  result_amount: 2
+gcheese:
+  consume_all: 0
+  id: gcheese
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The disgusting mixture sloughs together horribly, emitting a foul stench.
+  name: Weird Cheese
+  required_reagents:
+    gvomit: 1
+    milk: 1
+  required_temperature: -1
+  result: gcheese
+  result_amount: 1
+glitter:
+  consume_all: 0
+  id: glitter
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture becomes far more fabulous!
+  name: glitter
+  required_reagents:
+    colors: 1
+    itching: 1
+    paper: 1
+    silver: 1
+  required_temperature: -1
+  result: glitter
+  result_amount: 4
+haloperidol:
+  consume_all: 0
+  id: haloperidol
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The chemicals mix into an odd pink slush.
+  name: Haloperidol
+  required_reagents:
+    aluminium: 1
+    anti_rad: 1
+    chlorine: 1
+    fluorine: 1
+    oil: 1
+  required_temperature: -1
+  result: haloperidol
+  result_amount: 4
+infernite:
+  consume_all: 0
+  id: infernite
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 423
+  mix_phrase: The mixture gives off significant heat.
+  name: Chlorine Triflouride
+  required_reagents:
+    chlorine: 1
+    fluorine: 3
+  required_temperature: 423
+  result: infernite
+  result_amount: 2
+ironfoam:
+  consume_all: 0
+  id: ironlfoam
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The metal begins to foam up, becoming rigid and tough!
+  name: Iron Foam
+  required_reagents:
+    acid: 1
+    fluorosurfactant: 1
+    iron: 3
+  required_temperature: -1
+  result: ''
+  result_amount: 5
+itching:
+  consume_all: 0
+  id: itching
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture congeals and dries up, leaving behind an abrasive powder.
+  name: Itching Powder
+  required_reagents:
+    ammonia: 1
+    fuel: 1
+    space_fungus: 1
+  required_temperature: -1
+  result: itching
+  result_amount: 4
+jenkem:
+  consume_all: 0
+  id: jenkem
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture ferments into a filthy morass.
+  name: Jenkem
+  required_reagents:
+    poo: 1
+    urine: 1
+  required_temperature: -1
+  result: jenkem
+  result_amount: 2
+krokodil:
+  consume_all: 0
+  id: krokodil
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: The mixture dries into a pale blue powder.
+  name: Krokodil
+  required_reagents:
+    antihistamine: 1
+    cleaner: 1
+    fuel: 1
+    morphine: 1
+    phosphorus: 1
+    potassium: 1
+  required_temperature: 373
+  result: krokodil
+  result_amount: 5
+ldmatter:
+  consume_all: 0
+  id: ldmatter
+  inhibitors:
+  - stabiliser
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture implodes suddenly.
+  name: Liquid Dark Matter
+  required_reagents:
+    carbon: 1
+    plasma: 1
+    radium: 1
+  required_temperature: -1
+  result: ''
+  result_amount: 1
+ldmatterstable:
+  consume_all: 0
+  id: ldmatterstable
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The begins to glow in a dark purple.
+  name: Stable Liquid Dark Matter
+  required_reagents:
+    carbon: 1
+    plasma: 1
+    radium: 1
+    stabiliser: 1
+  required_temperature: -1
+  result: ldmatter
+  result_amount: 4
+life:
+  consume_all: 0
+  id: life
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: The substance begins to wriggle disgustingly and climbs out of its container!
+  name: Life
+  required_reagents:
+    blood: 2
+    strange_reagent: 1
+    synthflesh: 5
+  required_temperature: 373
+  result: life
+  result_amount: 8
+lipolicide:
+  consume_all: 0
+  id: lipolicide
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: A vague smell similar to tofu rises from the mixture.
+  name: Lipolicide
+  required_reagents:
+    diethylamine: 1
+    ephedrine: 1
+    mercury: 1
+  required_temperature: -1
+  result: lipolicide
+  result_amount: 2
+love:
+  consume_all: 0
+  id: love
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The substance gives off a lovely scent!
+  name: pure love
+  required_reagents:
+    chocolate: 1
+    hugs: 1
+  required_temperature: -1
+  result: love
+  result_amount: 2
+lube:
+  consume_all: 0
+  id: lube
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The substance turns a striking cyan and becomes oily.
+  name: Space Lube
+  required_reagents:
+    oxygen: 1
+    silicon: 1
+    water: 1
+  required_temperature: -1
+  result: lube
+  result_amount: 3
+mannitol:
+  consume_all: 0
+  id: mannitol
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture bubbles slowly, making a slightly sweet odor.
+  name: Mannitol
+  required_reagents:
+    hydrogen: 1
+    sugar: 1
+    water: 1
+  required_temperature: -1
+  result: mannitol
+  result_amount: 2
+meat_slurry:
+  consume_all: 0
+  id: meat_slurry
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture congeals into a bloody mass.
+  name: Meat Slurry
+  required_reagents:
+    blood: 1
+    cornstarch: 1
+  required_temperature: -1
+  result: meat_slurry
+  result_amount: 2
+metalfoam:
+  consume_all: 0
+  id: metalfoam
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The metal begins to foam up!
+  name: Metal Foam
+  required_reagents:
+    acid: 1
+    aluminium: 3
+    fluorosurfactant: 1
+  required_temperature: -1
+  result: ''
+  result_amount: 5
+methamphetamine:
+  consume_all: 0
+  id: methamphetamine
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: The solution fizzes and gives off toxic fumes.
+  name: Methamphetamine
+  required_reagents:
+    ephedrine: 1
+    hydrogen: 1
+    iodine: 1
+    phosphorus: 1
+  required_temperature: 373
+  result: methamphetamine
+  result_amount: 3
+mutadone:
+  consume_all: 0
+  id: mutadone
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: A foul astringent liquid emerges from the reaction.
+  name: Mutadone
+  required_reagents:
+    acetone: 1
+    bromine: 1
+    mutagen: 1
+  required_temperature: -1
+  result: mutadone
+  result_amount: 3
+mutagen:
+  consume_all: 0
+  id: mutagen
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The substance turns neon green and bubbles unnervingly.
+  name: Unstable mutagen
+  required_reagents:
+    chlorine: 1
+    plasma: 1
+    radium: 1
+  required_temperature: -1
+  result: mutagen
+  result_amount: 3
+napalm:
+  consume_all: 0
+  id: napalm
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The substance becomes sticky and extremely warm.
+  name: Phlogiston
+  required_reagents:
+    acid: 1
+    phosphorus: 1
+    plasma: 1
+    stabiliser: 1
+  required_temperature: -1
+  result: napalm
+  result_amount: 4
+napalm_goo:
+  consume_all: 0
+  id: napalm_goo
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture congeals into a sticky gel.
+  name: Napalm
+  required_reagents:
+    ethanol: 1
+    fuel: 1
+    sugar: 1
+  required_temperature: -1
+  result: napalm_goo
+  result_amount: 3
+oculine:
+  consume_all: 0
+  id: oculine
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture settles, becoming a milky white.
+  name: Oculine
+  required_reagents:
+    atropine: 1
+    saline: 1
+    spaceacillin: 1
+  required_temperature: -1
+  result: oculine
+  result_amount: 4
+oil:
+  consume_all: 0
+  id: oil
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: An iridescent black chemical forms in the container.
+  name: Oil
+  required_reagents:
+    carbon: 1
+    fuel: 1
+    hydrogen: 1
+  required_temperature: -1
+  result: oil
+  result_amount: 3
+pacid:
+  consume_all: 0
+  id: pacid
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: The mixture deepens to a dark blue, and slowly begins to corrode its
+    container.
+  name: Fluorosulfuric Acid
+  required_reagents:
+    acid: 1
+    fluorine: 1
+    hydrogen: 1
+    potassium: 1
+  required_temperature: 373
+  result: pacid
+  result_amount: 3
+penteticacid:
+  consume_all: 0
+  id: penteticacid
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The substance becomes very still, emitting a curious haze.
+  name: Pentetic Acid
+  required_reagents:
+    ammonia: 1
+    chlorine: 1
+    cyanide: 1
+    formaldehyde: 1
+    fuel: 1
+    sodium: 1
+  required_temperature: -1
+  result: penteticacid
+  result_amount: 6
+pepperoni:
+  consume_all: 0
+  id: pepperoni
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The beff and the synthflesh combine to form a smoky red log.
+  name: Pepperoni
+  required_reagents:
+    beff: 1
+    saltpetre: 1
+    synthflesh: 1
+  required_temperature: -1
+  result: pepperoni
+  result_amount: 2
+perfluorodecalin:
+  consume_all: 0
+  id: perfluorodecalin
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 373
+  mix_phrase: The mixture rapidly turns into a dense pink liquid.
+  name: Perfluorodecalin
+  required_reagents:
+    fluorine: 1
+    hydrogen: 1
+    oil: 1
+  required_temperature: 373
+  result: perfluorodecalin
+  result_amount: 2
+phenol:
+  consume_all: 0
+  id: phenol
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture bubbles and gives off an unpleasant medicinal odor.
+  name: Phenol
+  required_reagents:
+    chlorine: 1
+    oil: 1
+    water: 1
+  required_temperature: -1
+  result: phenol
+  result_amount: 3
+plant_nutrients:
+  consume_all: 0
+  id: saltpetre
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: A white crystalline substance condenses out of the mixture.
+  name: saltpetre
+  required_reagents:
+    poo: 1
+    potash: 1
+    urine: 1
+  required_temperature: -1
+  result: saltpetre
+  result_amount: 3
+potash1:
+  consume_all: 0
+  id: potash1
+  inhibitors: []
+  max_temperature: null
+  min_temperature: 353
+  mix_phrase: A white crystalline residue forms as the water boils off.
+  name: potash
+  required_reagents:
+    ash: 1
+    water: 1
+  required_temperature: 353
+  result: potash
+  result_amount: 1
+potash2:
+  consume_all: 0
+  id: potash2
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture yields a white crystalline compound.
+  name: potash
+  required_reagents:
+    acid: 1
+    chlorine: 1
+    potassium: 1
+  required_temperature: -1
+  result: potash
+  result_amount: 2
+salbutamol:
+  consume_all: 0
+  id: salbutamol
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The solution bubbles freely, creating a head of bluish foam.
+  name: Salbutamol
+  required_reagents:
+    aluminium: 1
+    ammonia: 1
+    bromine: 1
+    lithium: 1
+    salicylic_acid: 1
+  required_temperature: -1
+  result: salbutamol
+  result_amount: 5
+salicylic_acid:
+  consume_all: 0
+  id: salicylic_acid
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture crystallizes.
+  name: Salicylic Acid
+  required_reagents:
+    acid: 1
+    carbon: 1
+    oxygen: 1
+    phenol: 1
+    sodium: 1
+  required_temperature: -1
+  result: salicylic_acid
+  result_amount: 5
+saline:
+  consume_all: 0
+  id: saline
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: ''
+  name: Saline-Glucose Solution
+  required_reagents:
+    salt: 1
+    sugar: 1
+    water: 1
+  required_temperature: -1
+  result: saline
+  result_amount: 3
+salt:
+  consume_all: 0
+  id: salt
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The solution crystallizes with a brief flare of light.
+  name: Salt
+  required_reagents:
+    chlorine: 1
+    sodium: 1
+    water: 1
+  required_temperature: -1
+  result: salt
+  result_amount: 2
+silicate:
+  consume_all: 0
+  id: silicate
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The substance mixes into a clear, viscous liquid.
+  name: Silicate
+  required_reagents:
+    aluminium: 1
+    oxygen: 1
+    silicon: 1
+  required_temperature: -1
+  result: silicate
+  result_amount: 3
+silver_sulfadiazine:
+  consume_all: 0
+  id: silver_sulfadiazine
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: A strong and cloying odor begins to bubble from the mixture.
+  name: Burn Medication
+  required_reagents:
+    ammonia: 1
+    chlorine: 1
+    oxygen: 1
+    silver: 1
+    sulfur: 1
+  required_temperature: -1
+  result: silver_sulfadiazine
+  result_amount: 5
+smokepowder:
+  consume_all: 0
+  id: smokepowder
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture sets into a greyish powder!
+  name: Smoke Powder
+  required_reagents:
+    phosphorus: 1
+    potassium: 1
+    stabiliser: 1
+    sugar: 1
+  required_temperature: -1
+  result: smokepowder
+  result_amount: 3
+sonic_boom:
+  consume_all: 0
+  id: sonic_boom
+  inhibitors:
+  - stabiliser
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture begins to bubble furiously!
+  name: Hootingium
+  required_reagents:
+    cola: 1
+    oxygen: 1
+    phosphorus: 1
+  required_temperature: -1
+  result: ''
+  result_amount: 1
+sonic_powder:
+  consume_all: 0
+  id: sonicpowder
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture begins to bubble slighly!
+  name: Hootingium
+  required_reagents:
+    cola: 1
+    oxygen: 1
+    phosphorus: 1
+    stabiliser: 1
+  required_temperature: -1
+  result: sonicpowder
+  result_amount: 2
+sorium:
+  consume_all: 0
+  id: sorium
+  inhibitors:
+  - stabiliser
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture explodes with a big bang.
+  name: Sorium
+  required_reagents:
+    carbon: 1
+    mercury: 1
+    nitrogen: 1
+    oxygen: 1
+  required_temperature: -1
+  result: ''
+  result_amount: 1
+soriumstable:
+  consume_all: 0
+  id: soriumstable
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture pops and crackles before settling down.
+  name: Stable Sorium
+  required_reagents:
+    carbon: 1
+    mercury: 1
+    nitrogen: 1
+    oxygen: 1
+    stabiliser: 1
+  required_temperature: -1
+  result: sorium
+  result_amount: 4
+space_cleaner:
+  consume_all: 0
+  id: cleaner
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: Ick, this stuff really stinks. Sure does make the container sparkle
+    though!
+  name: Space cleaner
+  required_reagents:
+    ammonia: 1
+    ethanol: 1
+    water: 1
+  required_temperature: -1
+  result: cleaner
+  result_amount: 3
+space_drugs:
+  consume_all: 0
+  id: space_drugs
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: Slightly dizzying fumes drift from the solution.
+  name: Space Drugs
+  required_reagents:
+    lithium: 1
+    mercury: 1
+    sugar: 1
+  required_temperature: -1
+  result: space_drugs
+  result_amount: 3
+spaceacillin:
+  consume_all: 0
+  id: spaceacillin
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The solvent extracts an antibiotic compound from the fungus.
+  name: spaceacillin
+  required_reagents:
+    ethanol: 1
+    space_fungus: 1
+  required_temperature: -1
+  result: spaceacillin
+  result_amount: 2
+stabiliser:
+  consume_all: 0
+  id: stabiliser
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture becomes a yellow liquid!
+  name: Stabilising Agent
+  required_reagents:
+    hydrogen: 1
+    iron: 1
+    oxygen: 1
+  required_temperature: -1
+  result: stabiliser
+  result_amount: 2
+strange_reagent:
+  consume_all: 0
+  id: strange_reagent
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The substance begins moving on its own somehow.
+  name: ''
+  required_reagents:
+    mutagen: 1
+    omnizine: 1
+    water_holy: 1
+  required_temperature: -1
+  result: strange_reagent
+  result_amount: 2
+stypic_powder:
+  consume_all: 0
+  id: stypic_powder
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The solution yields an astringent powder.
+  name: Styptic Powder
+  required_reagents:
+    acid: 1
+    aluminium: 1
+    hydrogen: 1
+    oxygen: 1
+  required_temperature: -1
+  result: stypic_powder
+  result_amount: 4
+sulfonal:
+  consume_all: 0
+  id: sulfonal
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture gives off quite a stench.
+  name: Sulfonal
+  required_reagents:
+    acetone: 1
+    diethylamine: 1
+    sulfur: 1
+  required_temperature: -1
+  result: sulfonal
+  result_amount: 2
+super_hairgrownium:
+  consume_all: 0
+  id: super_hairgrownium
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The liquid becomes disgustingly furry and smells terrible.
+  name: Super Hairgrownium
+  required_reagents:
+    hairgrownium: 1
+    iron: 1
+    methamphetamine: 1
+  required_temperature: -1
+  result: super_hairgrownium
+  result_amount: 3
+surfactant:
+  consume_all: 0
+  id: foam surfactant
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: A head of foam results from the mixture's constant fizzing.
+  name: Foam surfactant
+  required_reagents:
+    acid: 1
+    carbon: 2
+    fluorine: 2
+  required_temperature: -1
+  result: fluorosurfactant
+  result_amount: 5
+synthflesh:
+  consume_all: 0
+  id: synthflesh
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture knits together into a fibrous, bloody mass.
+  name: Synthetic Flesh
+  required_reagents:
+    blood: 1
+    carbon: 1
+    stypic_powder: 1
+  required_temperature: -1
+  result: synthflesh
+  result_amount: 3
+teporone:
+  consume_all: 0
+  id: teporone
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture turns an odd lavender color.
+  name: Teporone
+  required_reagents:
+    acetone: 1
+    plasma: 1
+    silicon: 1
+  required_temperature: -1
+  result: teporone
+  result_amount: 2
+thalmerite:
+  consume_all: 0
+  id: thalmerite
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The resultant gel begins to emit significant heat.
+  name: Pyrosium
+  required_reagents:
+    phosphorus: 1
+    plasma: 1
+    radium: 1
+  required_temperature: -1
+  result: thalmerite
+  result_amount: 3
+thermite:
+  consume_all: 0
+  id: thermite
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The solution mixes into a reddish-brown powder.
+  name: Thermite
+  required_reagents:
+    aluminium: 1
+    iron: 1
+    oxygen: 1
+  required_temperature: -1
+  result: thermite
+  result_amount: 3
+water_holy:
+  consume_all: 0
+  id: water_holy
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The water somehow seems purified. Or maybe defiled.
+  name: Holy Water
+  required_reagents:
+    mercury: 1
+    water: 1
+    wine: 1
+  required_temperature: -1
+  result: water_holy
+  result_amount: 3
+weedkiller:
+  consume_all: 0
+  id: weedkiller
+  inhibitors: []
+  max_temperature: null
+  min_temperature: null
+  mix_phrase: The mixture gives off a harsh odor.
+  name: Atrazine
+  required_reagents:
+    chlorine: 1
+    hydrogen: 1
+    nitrogen: 1
+  required_temperature: -1
+  result: weedkiller
+  result_amount: 3
